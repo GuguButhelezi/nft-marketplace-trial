@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -37,7 +35,6 @@ const HotCollections = () => {
     const info = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections')
     setData(info.data)
     setLoading(false)
-    console.log(loading)
     return info
   }
   
@@ -56,7 +53,7 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          {loading ?
+          {!loading ?
             <OwlCarousel {...options}>
               {data.map((item) => (
                 <div className="nft_coll" key={item.id}>
