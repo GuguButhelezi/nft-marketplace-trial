@@ -16646,9 +16646,26 @@ img {
   width: 180px;
 }
 
+
+.skel-title_new{
+  margin-top: 20px;
+}
+
 .skel-code{
   width: 132px;
   margin-top: 12px;
+}
+
+.skel-like{
+  width: 32px;
+  height: 24px;
+  margin-top: 12px;
+  margin-left: 64px;
+}
+
+.skel-new{
+  display: flex;
+  justify-content: space-between;
 }
 
 .skel-code, .skel-title{
