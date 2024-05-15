@@ -16642,6 +16642,11 @@ img {
   margin: 12px;
 }
 
+.expbox{
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
 .skel-title{
   width: 180px;
 }

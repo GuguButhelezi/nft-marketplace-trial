@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import Timer from "../UI/Timer";
+import Card from "../UI/Card";
 
 const NewItems = () => {
 
@@ -56,59 +55,9 @@ const NewItems = () => {
           </div>
           {!loading ?
             <OwlCarousel {...options}>
+              
               {newItems.map((item) => (
-                <div className="nft__item" key={item.id}>
-                  <div className="author_list_pp">
-                    <Link
-                      to={`/author/${item.authorId}`}
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                    >
-                      <img className="lazy" src={item.authorImage} alt="" />
-                      <i className="fa fa-check"></i>
-                    </Link>
-                  </div>
-                  {item.expiryDate ?
-                    <Timer expiryDate={item.expiryDate}/> : ''}
-
-                  <div className="nft__item_wrap">
-                    <div className="nft__item_extra">
-                      <div className="nft__item_buttons">
-                        <button>Buy Now</button>
-                        <div className="nft__item_share">
-                          <h4>Share</h4>
-                          <a href="" target="_blank" rel="noreferrer">
-                            <i className="fa fa-facebook fa-lg"></i>
-                          </a>
-                          <a href="" target="_blank" rel="noreferrer">
-                            <i className="fa fa-twitter fa-lg"></i>
-                          </a>
-                          <a href="">
-                            <i className="fa fa-envelope fa-lg"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <Link to={`/item-details/${item.nftId}`}>
-                      <img
-                        src={item.nftImage}
-                        className="lazy nft__item_preview"
-                        alt=""
-                      />
-                    </Link>
-                  </div>
-                  <div className="nft__item_info">
-                    <Link to="/item-details">
-                      <h4>{item.title}</h4>
-                    </Link>
-                    <div className="nft__item_price">{item.price} ETH</div>
-                    <div className="nft__item_like">
-                      <i className="fa fa-heart"></i>
-                      <span>{item.likes}</span>
-                    </div>
-                  </div>
-                </div>
+                <Card key={item.id} authorId={item.authorId} authorImage={item.authorImage} nftId={item.nftId} nftImage={item.nftImage} title={item.title} price={item.price} likes={item.likes} expiryDate={item.expiryDate}/>
               ))}
             </OwlCarousel> : <div className="container">
               <div className="row">
