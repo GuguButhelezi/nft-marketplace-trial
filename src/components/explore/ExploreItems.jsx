@@ -26,15 +26,21 @@ const ExploreItems = () => {
     }
   }
 
-  function handleFilter(value) {
+  async function handleFilter(value) {
+    setLoading(true)
+    let filter = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${value}`)
+    
     if (value === 'price_low_to_high'){
-      setExplore(explore.slice().sort((a, b) => (a.price - b.price)))
+      setExplore(filter.data)
+      setLoading(false)
     }
     else if (value === 'price_high_to_low'){
-      setExplore(explore.slice().sort((a, b) => (b.price - a.price)))
+      setExplore(filter.data)
+      setLoading(false)
     }
     else if (value === 'likes_high_to_low'){
-      setExplore(explore.slice().sort((a, b) => (b.likes - a.likes)))
+      setExplore(filter.data)
+      setLoading(false)
     }
   }
 
