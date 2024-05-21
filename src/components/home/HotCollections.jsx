@@ -4,6 +4,8 @@ import axios from "axios";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const HotCollections = () => {
   const options = {
@@ -40,6 +42,9 @@ const HotCollections = () => {
   
   useEffect(() => {
     getHotCollections();
+    AOS.init({
+      disable: false,
+    });
   }, [])
 
 
@@ -54,7 +59,7 @@ const HotCollections = () => {
             </div>
           </div>
           {!loading ?
-            <OwlCarousel {...options}>
+            <OwlCarousel {...options} data-aos='fade' data-aos-duration="1200">
               {data.map((item) => (
                 <div className="nft_coll" key={item.id}>
                   <div className="nft_wrap">

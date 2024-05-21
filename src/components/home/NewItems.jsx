@@ -4,6 +4,8 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Card from "../UI/Card";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const NewItems = () => {
 
@@ -41,6 +43,9 @@ const NewItems = () => {
 
   useEffect(() => {
     getNewItems()
+    AOS.init({
+      disable: false,
+    });
   }, [])
 
   return (
@@ -54,7 +59,7 @@ const NewItems = () => {
             </div>
           </div>
           {!loading ?
-            <OwlCarousel {...options}>
+            <OwlCarousel {...options} data-aos='fade' data-aos-duration="1200">
               
               {newItems.map((item) => (
                 <Card key={item.id} authorId={item.authorId} authorImage={item.authorImage} nftId={item.nftId} nftImage={item.nftImage} title={item.title} price={item.price} likes={item.likes} expiryDate={item.expiryDate}/>
