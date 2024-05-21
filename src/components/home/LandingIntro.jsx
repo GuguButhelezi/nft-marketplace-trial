@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const LandingIntro = () => {
+  useEffect(() => {
+    AOS.init({
+      disable: false,
+    });
+  }, [])
+
   return (
-    <section id="section-intro" className="no-top no-bottom">
+    <section id="section-intro" className="no-top no-bottom" data-aos='fade' data-aos-duration="1200"
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-4 col-md-6 mb-sm-30">
